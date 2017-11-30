@@ -1,11 +1,10 @@
-var fs = require('fs');
 var dir = process.argv[2];
-var ext = '.' + process.argv[3];
-
-fs.readdir(dir, (err,data) => {
-    if (err) return console.error(err);
-    const result = data.filter(_ => _.includes(ext));
-    result.forEach(element => {
-        console.log(element);
+var ext = process.argv[3];
+var mymodule = require('./6.Module')
+    
+    mymodule(dir,ext, function(err,result){
+        if (err) console.error(err);
+        result.forEach(element => {
+            console.log(element);
+        });
     });
-});
